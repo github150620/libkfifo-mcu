@@ -24,7 +24,7 @@ struct kfifo {
 	unsigned int out;
 };
 
-// 'size' should be n^2. 
+// The param 'size' should be 2^n. 
 void kfifo_init(struct kfifo *fifo, unsigned char *buffer, unsigned int size) {
 	if (!fifo) return
 	if (!buffer) return
