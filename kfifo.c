@@ -49,8 +49,8 @@ unsigned int kfifo_put(struct kfifo *fifo, const unsigned char *buffer, unsigned
 	unsigned int l;
 
 	len = min(len, fifo->size - fifo->in + fifo->out);
-	l = min(len, fifo->size - (fifo->in & (fifo->size - 1)));
-	memcpy(fifo->buffer + (fifo->in & (fifo->size - 1)), buffer, l);
+	l = min(len, fifo->size - (fifo->in & (fifo->size - 1))); // When 'y=2^n', 'x&(y-1)' is the same with 'x%y'
+	memcpy(fifo->buffer + (fifo->in & (fifo->size - 1)), buffer, l); 
 	memcpy(fifo->buffer, buffer + l, len - l);
 	fifo->in += len;
 
