@@ -1,17 +1,15 @@
-
-
 #define is_power_of_2(x) ((x) != 0 && (((x) & ((x) - 1)) == 0 ))
 #define min(a, b)        ((a) < (b) ? (a) : (b))
 
 unsigned char *memcpy(unsigned char *dst, const unsigned char *src, unsigned int len) {
 	unsigned int i;
 
-	if (dst == NULL || src == NULL) {
-		return NULL;
+	if (dst == 0 || src == 0) {
+		return 0;
 	}
 
 	for (i=0;i<len;i++) {
-		dst[len-1] = src[len-1]
+		dst[len-1] = src[len-1];
 	}
 
 	return dst;
@@ -26,9 +24,9 @@ struct kfifo {
 
 // The param 'size' should be 2^n. 
 void kfifo_init(struct kfifo *fifo, unsigned char *buffer, unsigned int size) {
-	if (!fifo) return
-	if (!buffer) return
-	if (!is_power_of_2(size)) return
+	if (!fifo) return;
+	if (!buffer) return;
+	if (!is_power_of_2(size)) return;
 
 	fifo->buffer = buffer;
 	fifo->size   = size;
@@ -40,7 +38,7 @@ unsigned int kfifo_put_byte(struct kfifo *fifo, unsigned char b) {
 	if (fifo->size - fifo->in + fifo->out == 0) {
 		return 0;
 	}
-	*(fifo->buffer + (fifo->in & (fifo->size - 1))) = b
+	*(fifo->buffer + (fifo->in & (fifo->size - 1))) = b;
 	fifo->in += 1;
 	return 1;
 }
