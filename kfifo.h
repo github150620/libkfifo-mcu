@@ -1,6 +1,13 @@
 #ifndef _KFIFO_H_
 #define _KFIFO_H_
 
+struct kfifo {
+	unsigned char *buffer;
+	unsigned int size;
+	unsigned int in;
+	unsigned int out;
+};
+
 // The param 'size' should be 2^n.
 void kfifo_init(struct kfifo *fifo, unsigned char *buffer, unsigned int size);
 
