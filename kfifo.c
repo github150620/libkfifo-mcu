@@ -34,7 +34,7 @@ void kfifo_init(struct kfifo *fifo, unsigned char *buffer, unsigned int size) {
 	fifo->out    = 0;
 }
 
-unsigned int kfifo_put_byte(struct kfifo *fifo, unsigned char b) {
+int kfifo_put_byte(struct kfifo *fifo, unsigned char b) {
 	if (fifo->size - fifo->in + fifo->out == 0) {
 		return 0;
 	}
@@ -43,7 +43,7 @@ unsigned int kfifo_put_byte(struct kfifo *fifo, unsigned char b) {
 	return 1;
 }
 
-unsigned int kfifo_put(struct kfifo *fifo, const unsigned char *buffer, unsigned int len) {
+int kfifo_put(struct kfifo *fifo, const unsigned char *buffer, unsigned int len) {
 	unsigned int l;
 
 	len = min(len, fifo->size - fifo->in + fifo->out);
@@ -55,7 +55,7 @@ unsigned int kfifo_put(struct kfifo *fifo, const unsigned char *buffer, unsigned
 	return len;
 }
 
-unsigned int kfifo_get(struct kfifo *fifo, unsigned char *buffer, unsigned int len) {
+int kfifo_get(struct kfifo *fifo, unsigned char *buffer, unsigned int len) {
 	unsigned int l;
 
 	len = min(len, fifo->in - fifo->out);
