@@ -1,6 +1,6 @@
 # libkfifo-mcu
-* For MCU.
-* NOT thread safe.
+* Designed For UART receive data.
+* Not thread safe, but it's safe to 'put' in IRQ and 'get' in main().
 
 ## How to use
 ```
@@ -8,6 +8,7 @@
 
 struct kfifo fifo;
 unsigned char fifo_buffer[128];
+
 unsigned char buf[32];
 
 void main() {
