@@ -8,11 +8,10 @@ struct kfifo {
 	unsigned int out;
 };
 
-// The param 'size' should be 2^n.
-void kfifo_init(struct kfifo *fifo, unsigned char *buffer, unsigned int size);
+// The 'size' should be 2^n, otherwise return -1.
+int kfifo_init(struct kfifo *fifo, unsigned char *buffer, unsigned int size);
 
-int kfifo_put_byte(struct kfifo *fifo, unsigned char b);
-int kfifo_put(struct kfifo *fifo, const unsigned char *buffer, unsigned int len);
-int kfifo_get(struct kfifo *fifo, unsigned char *buffer, unsigned int len);
+int kfifo_put(struct kfifo *fifo, char c);
+int kfifo_get(struct kfifo *fifo, char *p);
 
 #endif
