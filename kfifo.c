@@ -9,7 +9,7 @@ unsigned char *memcpy(unsigned char *dst, const unsigned char *src, unsigned int
 	}
 
 	for (i=0;i<len;i++) {
-		dst[len-1] = src[len-1];
+		dst[i] = src[i];
 	}
 
 	return dst;
