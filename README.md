@@ -1,5 +1,5 @@
 # libkfifo-mcu
-KFIFO for MCU
+KFIFO for MCU. Becareful, it's NOT thread safe.
 
 ## How to use
 ```
