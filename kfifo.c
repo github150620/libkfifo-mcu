@@ -32,7 +32,7 @@ int kfifo_put(struct kfifo *fifo, char c) {
 int kfifo_get(struct kfifo *fifo, char *p) {
 	if (fifo->in == fifo->out) return -1;
 	
-	*p = fifo->buffer[fifo->out];
+	*p = fifo->buffer[fifo->out & (fifo->size - 1)];
 	fifo->out++;
 	
 	return 0;
