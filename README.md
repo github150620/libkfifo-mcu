@@ -14,7 +14,7 @@ unsigned char fifo_buffer[128]; // The size of fifo_buffer MUST BE 2^n.
 unsigned char buf[32];
 
 @far @interrupt void UART1_RCV_IRQHandler(void) {
-  kfifo_put_byte(&fifo, UART1_DR);
+  kfifo_put(&fifo, UART1_DR);
 }
 
 void main() {
