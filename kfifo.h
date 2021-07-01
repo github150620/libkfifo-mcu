@@ -11,7 +11,7 @@ struct kfifo {
 // The 'size' should be 2^n, otherwise return -1.
 int kfifo_init(struct kfifo *fifo, unsigned char *buffer, unsigned int size);
 
-int kfifo_put(struct kfifo *fifo, char c);
-int kfifo_get(struct kfifo *fifo, char *c);
+int kfifo_put(struct kfifo *fifo, unsigned char c);
+int kfifo_get(struct kfifo *fifo, unsigned char *c);
 
 #endif
