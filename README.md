@@ -18,10 +18,11 @@ unsigned char buf[32];
 }
 
 void main() {
+  unsigned char c;
   kfifo_init(&fifo, fifo_buffer, sizeof(fifo_buffer));
 
   while (1) {
-    kfifo_get(&fifo, buf);
+    kfifo_get(&fifo, &c);
     ...
    }
 }
