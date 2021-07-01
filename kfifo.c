@@ -20,7 +20,7 @@ int kfifo_init(struct kfifo *fifo, unsigned char *buffer, unsigned int size) {
 	return 0;
 }
 
-int kfifo_put(struct kfifo *fifo, char c) {
+int kfifo_put(struct kfifo *fifo, unsigned char c) {
 	if (fifo->in + 1 == fifo->out) return -1;
 
 	fifo->buffer[fifo->in & (fifo->size - 1)] = c;
@@ -29,7 +29,7 @@ int kfifo_put(struct kfifo *fifo, char c) {
 	return 0;
 }
 
-int kfifo_get(struct kfifo *fifo, char *c) {
+int kfifo_get(struct kfifo *fifo, unsigned char *c) {
 	if (fifo->in == fifo->out) return -1;
 
 	*c = fifo->buffer[fifo->out & (fifo->size - 1)];
